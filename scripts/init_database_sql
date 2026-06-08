@@ -1,0 +1,42 @@
+/*
+================================================================================
+Create Database and Schemas
+================================================================================
+
+Script Purpose:
+    This script initializes the Data Warehouse environment. It checks if the 
+    'DataWarehouse' database already exists, drops it if it does, and recreates 
+    it from scratch. It also establishes the core Medallion Architecture by 
+    creating three separate schemas: 'bronze', 'silver', and 'gold'.
+
+WARNING:
+    Running this script will drop the entire 'DataWarehouse' database if it exists.
+    All existing data and tables will be permanently deleted. Proceed with caution.
+*/
+
+-- Check if the db exists, before creating a new one
+
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name= 'DataWarehouse')
+BEGIN 
+	ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+	DROP DATABASE DataWarehouse;
+END;
+GO
+
+-- 1. Create the 'DataWarehouse' database
+CREATE DATABASE DataWarehouse;
+GO
+
+-- 2. Transfer into the 'DataWarehouse' database
+USE DataWarehouse; 
+GO
+
+-- 3. Create 3 layers of Medallion Architecture
+CREATE SCHEMA bronze;
+GO
+
+CREATE SCHEMA silver;
+GO
+
+CREATE SCHEMA gold;
+GO
