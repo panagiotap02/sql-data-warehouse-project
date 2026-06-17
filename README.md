@@ -1,6 +1,13 @@
 # sql-data-warehouse-project
 Building a modern data warehouse with SQL Server, including ETL processes, data modeling and data analytics.
 
+## This project involves:
+
+Data Architecture: Designing a Modern Data Warehouse Using Medallion Architecture Bronze, Silver, and Gold layers.
+ETL Pipelines: Extracting, transforming, and loading data from source systems into the warehouse.
+Data Modeling: Developing fact and dimension tables optimized for analytical queries.
+Analytics & Reporting: Creating SQL-based reports and dashboards for actionable insights.
+
 ## Project Requirements 
 The goal of this project phase is to establish the **Bronze Layer** of a modern Data Warehouse using **SQL Server**. This layer serves as the initial landing zone to consolidate sales data from two distinct source systems (**ERP** and **CRM**), which are provided as CSV files. 
 
