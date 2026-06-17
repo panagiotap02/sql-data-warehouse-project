@@ -38,10 +38,26 @@ We ingest raw data from two primary systems:
 
 ---
 
-## Repository Structure
+## 📂 Repository Structure
+
 ```text
-├── Scripts/
-│   ├── 01_DDL_Bronze_Tables.sql       # Script to create the bronze schema and raw tables
-│   └── 02_Bulk_Insert_Raw_Data.sql    # Script to load ERP and CRM CSV files into SQL Server
-├── Data/                              # [Optional] Sample CSV source files (ERP/CRM)
-└── README.md                          # Project documentation
+📁 sql-data-warehouse-project
+├── 📁 datasets
+│   ├── 📁 source_crm
+│   │   ├── 📄 cust_info.csv
+│   │   ├── 📄 prd_info.csv
+│   │   └── 📄 sales_details.csv
+│   └── 📁 source_erp
+│       ├── 📄 CUST_AZ12.csv
+│       ├── 📄 LOC_A101.csv
+│       └── 📄 PX_CAT_G1V2.csv
+├── 📁 docs
+├── 📁 scripts
+│   └── 📄1.init_database_sql.sql
+│   └── 📄2.ddl_bronze.sql
+│   └── 📄3.load_bronze_sql
+│   └── 📄4.ddl_silver.sql
+│   └── 📄5.load_silver_sql.sql
+│   └── 📄6.views_gold.sql.sql
+├── 📁 tests
+└── 📄 README.md
