@@ -11,11 +11,19 @@ Data Modeling: Developing fact and dimension tables optimized for analytical que
 
 Analytics & Reporting: Creating SQL-based reports and dashboards for actionable insights.
 
+
 ## Project Requirements 
-The goal of this project phase is to establish the **Bronze Layer** of a modern Data Warehouse using **SQL Server**. This layer serves as the initial landing zone to consolidate sales data from two distinct source systems (**ERP** and **CRM**), which are provided as CSV files. 
+The goal of this project phase is to establish a centralized repository that merges disparate data sources into a single, optimized data model designed for high-performance analytical queries using **SQL Server**. This layer serves as the initial landing zone to consolidate sales data from two distinct source systems (**ERP** and **CRM**), which are provided as CSV files. 
 
 ---
+### Objective
+To build robust, SQL-based analytics that transform raw data warehouse tables into actionable business insights.
 
+### Key Insights Delivered
+* **Customer Behavior:** Analyzing purchasing patterns, engagement, and customer segmentation.
+* **Product Performance:** Identifying top-performing products, revenue drivers, and inventory trends.
+* **Sales Trends:** Tracking revenue growth, seasonal fluctuations, and key performance indicators (KPIs).
+---
 ## Architecture & Specifications
 
 ### 1. Data Sources (Ingestion)
