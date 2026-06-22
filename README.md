@@ -196,10 +196,10 @@ Certifies Star Schema structural health before reporting structures process visu
 
 *Execute Pipeline Processing: Run the pipeline components in sequence to clean and ingest local data files:
 
-    ```bash
-   EXEC bronze.load_bronze;
-   EXEC silver.load_silver;
-   ```
+```bash
+EXEC bronze.load_bronze;
+EXEC silver.load_silver;
+```
 
 *Deploy Presentation Layers: Execute script 6 to compile the final Gold analytical schema views.
 
