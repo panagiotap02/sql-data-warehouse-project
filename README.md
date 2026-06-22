@@ -199,7 +199,7 @@ Certifies Star Schema structural health before reporting structures process visu
     ```bash
    EXEC bronze.load_bronze;
    EXEC silver.load_silver;
-    ```
+   ```
 
 *Deploy Presentation Layers: Execute script 6 to compile the final Gold analytical schema views.
 
