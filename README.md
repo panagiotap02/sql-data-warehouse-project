@@ -75,7 +75,7 @@ We ingest raw data from two primary systems:
 ### Step 1: Warehouse & Schemas Initialization (1.init_database.sql)
 Prepares a clean deployment environment. It drops any existing database instance securely by resetting active user connection allocations to prevent structural object locks, recreates the container, and builds the explicit schema boundaries:
 
-```bash
+```sql
 ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
 DROP DATABASE DataWarehouse;
 CREATE DATABASE DataWarehouse;
@@ -94,7 +94,7 @@ Tables Created: crm_cust_info, crm_prd_info, crm_sales_details, erp_loc_a101, er
 ### Step 3: Raw Data Bulk Loading (3.load_bronze.sql)
 Compiles a Stored Procedure (bronze.load_bronze) automating file ingestion via SQL Server’s native **BULK INSERT**. It integrates target table truncation to avoid duplicated staging loads, handles error routing via **TRY...CATCH**, and captures metric execution runtimes using **DATEDIFF**.
 
-```bash
+```sql
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 BEGIN
     BEGIN TRY
@@ -151,19 +151,19 @@ The repository deploys an automated testing framework inside the tests/ folder t
 Profiles dataset sanity right after staging pipeline runs conclude:
   
     Entity Integrity Constraints: Scans for primary attribute collisions or illegal null constraints.
-    ```bash
+    ```sql
     HAVING COUNT(*) > 1 OR cst_id IS NULL
     ```
     
     Format Defect Isolation: Verifies whitespace trimming by checking for string alignment mismatches.
-    ```bash
+    ```sql
     WHERE field != TRIM(field)
     ```
     
     Chronological Rule Checking: Catches range anomalies, ensuring that record end dates are never chronologically lower than their start dates.
     
     Financial Balance Verification: Validates row calculations against business arithmetic parameters to flag broken transactions.
-    ```bash
+    ```sql
     (WHERE sls_sales != sls_quantity * sls_price).
     ```
 
@@ -174,7 +174,7 @@ Certifies Star Schema structural health before reporting structures process visu
   
   Referential Integrity Auditing: Runs join validations between the transactional facts file and outskirt dimensional entities. If an active transactional reference maps to an missing key sequence, the diagnostic test catches the orphan reference immediately.
 
-    ```bash
+    ```sql
     -- Automated Referential Integrity Join Assertion
     -- Expected Output: 0 rows returned (Zero anomalies detected)
     SELECT * FROM gold.fact_sales f
@@ -196,7 +196,7 @@ Certifies Star Schema structural health before reporting structures process visu
 
 *Execute Pipeline Processing: Run the pipeline components in sequence to clean and ingest local data files:
 
-```bash
+```sql
 EXEC bronze.load_bronze;
 EXEC silver.load_silver;
 ```
